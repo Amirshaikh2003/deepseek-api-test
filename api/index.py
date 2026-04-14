@@ -1,8 +1,14 @@
-def handler(request):
-    return {
-        "statusCode": 200,
-        "body": '{"message": "Vercel Python API is working 🚀"}',
-        "headers": {
-            "Content-Type": "application/json"
+from http.server import BaseHTTPRequestHandler
+import json
+
+class handler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.send_header("Content-type", "application/json")
+        self.end_headers()
+
+        response = {
+            "message": "Vercel Python API is working 🚀"
         }
-    }
+
+        self.wfile.write(json.dumps(response).encode())
