@@ -7,8 +7,6 @@ class handler(BaseHTTPRequestHandler):
         self.send_header("Content-type", "application/json")
         self.end_headers()
 
-        response = {
-            "message": "Vercel Python API is working 🚀"
-        }
-
-        self.wfile.write(json.dumps(response).encode())
+        self.wfile.write(json.dumps({
+            "message": "Working 🚀"
+        }).encode())
